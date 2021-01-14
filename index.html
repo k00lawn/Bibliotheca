@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg" href="lib/img/book.svg">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Imbue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Book Library</title>
+  <script src="main.js" defer></script>
+  
+</head>
+<body>
+  <div id="large-th">
+    <div class="container">
+      <h1> The Book Library </h1>
+      <br>
+      <div class="choose">
+        <a href="#list-th"><i class="fa fa-th-list" aria-hidden="true"></i></a>
+        <a href="#large-th"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+      </div>
+        <div id="list-th">
+          <h1 id="error-message">Phew no books today? feel free to add one</h1>
+          <!-- Book Cards -->
+                
+        </div>
+      </div>
+      <div id="modal" class="modal">
+        <form id="form" class="form">
+          <h2>Add Book</h2>
+          <p>Book Title <input type="text" id="title" name="title"></input></p>
+          <p>Author <input type="text" id="author" name="author"></input></p>
+          <p>Pages<input type="number" id="pages" name="pages"></input></p>
+          <p>Have you read the book?
+          <select name="book_read" id="book_read"> 
+              <option value=false>No, I have not read the book yet</option>
+              <option value=true>I have read the book.</option>
+          </select></p>
+          <div>
+          <span id="error-form">Oops! please check book info</span>
+            <button type="submit">Add</button>
+          </div>
+          </form>
+        </div> 
+  </div>
+  <a id="plus"><div class="plus radius"></div></a>
+</body>
+</html>
+

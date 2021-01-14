@@ -1,0 +1,263 @@
+.container {
+    margin: 0 auto;
+    max-width: 910px;
+  }
+  
+  .choose {
+    width: 100%;
+    height: 40px;
+  }
+  .fa {
+    margin-right: 20px;
+    font-size: 30px;
+    color: gray;
+    float: right;
+  }
+  /******************************************
+  Book stuff
+  *******************************************/
+  
+  .book {
+    display: inline-block;
+    width: 230px;
+    height: 390px;
+    box-shadow: 0 0 20px #aaa;
+    margin: 25px;
+    padding: 10px 10px 0 10px;
+    vertical-align: top;
+    transition: height 1s;
+  }
+  /* star button */
+  /* .book:after {
+    font-family: FontAwesome;
+    content: "\f1f8";
+    font-size: 35px;
+    position: relative;
+    left: -.1cm;
+    top: -1.6cm;
+    float: right;
+  } */
+  
+  .cover {
+    position: relative;
+    background-color: #777777 ;
+    border: 2px solid black;
+    height: 80%;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .cover img {
+    width: 100%;
+  }
+  
+  .book p {
+    font-family: 'Imbue', serif;
+    margin-top: 12px;
+    font-size: 20px;
+  }
+  
+  .book .author {
+    font-size: 15px;
+  }
+  @media (max-width: 941px) {
+    .container {
+      max-width: 700px;
+    }
+    .book {
+      margin: 49px;
+    }
+  }
+  @media (max-width: 730px) {
+    .book {
+      display: block;
+      margin: 0 auto;
+      margin-top: 50px;
+    }
+  }
+  
+  /*********************************
+  other
+  **********************************/
+  
+  h1 {
+    font-family: 'Imbue', serif;
+    color: gray;
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: -3px;
+  }
+  
+  /**********************************
+  display change
+  ***********************************/
+  /*book height smaller, cover opacity, move text onto cover and star too
+  animate it */
+  #list-th:target .book {
+    height: 100px;
+    width: 250px;
+    padding: 10px;
+    margin: 25px auto 25px auto;
+  }
+  
+  #list-th:target .cover {
+    width: 246px;
+  }
+  
+  #list-th:target img {
+    opacity: .1;
+  }
+  
+  #list-th:target p {
+    margin-top: -62px;
+    margin-left: 20px;
+  }
+  /* remove button? */
+  #large-th:target .book {
+    height: 390px;
+  }
+
+  a {
+    cursor: pointer;
+  }
+
+  #error-message {
+    font-family: 'Imbue', serif;
+    display: none;
+  }
+
+  .book h1 {
+    color: #fff;
+  }
+
+  .book .fa {
+    margin-right: 5px;
+    float: right;
+    font-size: 22px;
+  }
+
+  .book .pages {
+    position: relative;
+    margin-right: 5px;
+    float: right;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  /***********************************
+  star animation
+  ***********************************/
+  /***********************************
+  zoom on click
+  ***********************************/
+
+  /* Create button */
+
+.plus {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width:50px;
+  height:50px;
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background:
+    linear-gradient(#777777,#777777),
+    linear-gradient(#777777,#777777),
+    #fff;
+    
+  background-position:center;
+  background-size: 50% 2px,2px 50%; /*thickness = 2px, length = 50% (25px)*/
+  background-repeat:no-repeat;
+}
+
+.plus:hover{
+  background:
+    linear-gradient(#fff,#fff),
+    linear-gradient(#fff,#fff),
+    #555555;
+  background-position:center;
+  background-size: 50% 2px,2px 50%; /*thickness = 2px, length = 50% (25px)*/
+  background-repeat:no-repeat;
+}
+
+.radius {
+  border-radius:50%;
+
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Add Book Form */
+
+.form{
+  display: block;
+  width:340px;height:500px;
+  background:#e6e6e6;border-radius:8px;box-shadow:0 0 40px -10px #000;
+  margin:calc(50vh - 290px) auto;padding:20px 30px;
+  max-width:calc(100vw - 40px);box-sizing:border-box;position:relative}
+h2{margin:10px 0;padding-bottom:10px;width:180px;color:#555555;border-bottom:3px solid #555555; font-family: 'Imbue', serif; font-weight: 1000; font-size: 30px;}
+p:before{content:attr(type);display:block;margin:20px 0 0;font-size:10px;color:#666666;}
+p {
+  font-family: 'Imbue', serif;
+  font-size: 22px;
+  color: #666666;
+}
+input{width:100%;padding:1px;box-sizing:border-box;background:none;outline:none;resize:none;border:0;font-family: 'Imbue', serif;transition:all .3s;border-bottom:2px solid #777777; font-size: 18px;}
+
+button {
+  float: right;
+  background-color: #e6e6e6;
+  border-color: #555555;
+  font-family: 'Imbue', serif;
+  font-size: 20px;
+  color: #555555;
+  height: 40px;
+  width: 50px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #555555;
+  color:  #e6e6e6;
+}
+
+select {
+  background: none;
+  resize: none;
+  outline: none;
+  font-size: 18px;
+  border: 0;
+  border-bottom: 2px solid #777777;
+  font-family: 'Imbue', serif;
+  margin: 20px 0 0;
+  width: 100%;
+}
+
+option {
+  background-color: solid #777777;
+}
+
+#error-form {
+  font-family: 'Imbue', serif;
+  color: #555555;
+  display: none;
+  margin-left: 5px;
+  margin-top: 10px;
+  float: left;
+}
