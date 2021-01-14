@@ -1,4 +1,3 @@
-
 // Book constructor
 function Book (title, author, pages, read) {
     this.title = title;
@@ -9,10 +8,6 @@ function Book (title, author, pages, read) {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
     }
 }
-
-const book1 = new Book ("Frankenstein", "Mary Shelley", 293, true )
-const book2 = new Book ("Astro", "Neil DeGrasse", 293, false )
-
 
 var myLibrary = [];
 
@@ -31,9 +26,7 @@ function closePopUp() {
     addBookBtn.style.display = "block"
 }
 
-addBookBtn.addEventListener("click", () => {
-    openPopUp()
-})
+
 
 window.onclick = function(event) {
     if (event.target == modal) {
@@ -47,8 +40,14 @@ window.addEventListener ( "load", () => {
     const form = document.getElementById( "form" );
     const error_form = document.getElementById("error-form")
 
+    addBookBtn.addEventListener("click", () => {
+        openPopUp()
+        form.reset()
+    })
+
     form.addEventListener("submit", function (event)  {
         event.preventDefault();
+        
 
         const form_title = document.getElementById('title').value
         const form_author = document.getElementById('author').value
@@ -57,7 +56,6 @@ window.addEventListener ( "load", () => {
 
         //Form Validation
         if(!form_title || !form_author || !form_pages) {
-            console.log("Please check your book info!")
             error_form.style.display = "block"
             return false
         }
@@ -66,8 +64,6 @@ window.addEventListener ( "load", () => {
         form_pages = parseInt(form_pages)
         form_bookread = (form_bookread === "true") ? true : false
 
-        console.log(form_pages)
-        console.log(form_bookread)
         
         addBook(form_title, form_author, parseInt(form_pages), form_bookread)
         closePopUp()
@@ -77,14 +73,10 @@ window.addEventListener ( "load", () => {
 
 //Load App
 function loadApp () {
-    console.log('here')
-    //myLibrary = localStorage.getItem('myLibrary')
+    
     if(load()) {
-        console.log('after load is true')
         myLibrary = JSON.parse(localStorage.getItem('myLibrary'))
         for (let i = 0; i < myLibrary.length; i++) {
-            console.log(i)
-            console.log(myLibrary[i])
             createBook(myLibrary[i])
         }
     } 
@@ -94,7 +86,6 @@ function loadApp () {
 
 //Remove book function
 function removeBook(book) {
-    console.log('deleting')
     myLibrary.splice(book, 1)
     save()
     load()
@@ -125,7 +116,6 @@ function markUnRead (coverIndex, coverTitle) {
 
 //Create books by dynamic html
 function createBook (book) {
-    console.log(book.title)
 
     //Book info
     const bookIndex = myLibrary.indexOf(book)
@@ -212,13 +202,13 @@ function save() {
 
 //Loading from local storage
 function load() {
-    const h1 = document.createElement('h1')
-    const list = document.querySelector('#list-th')
+    if((JSON.parse(localStorage.getItem('myLibrary'))) === null) {
+        save()
+    }
     const localLibrary = JSON.parse(localStorage.getItem('myLibrary'))
 
     var err_el = document.getElementById("error-message")
     if(!localLibrary.length) {
-        console.log('inside empty load', err_el.style.display)
         err_el.style.display = "block"
         return false
     } else {
