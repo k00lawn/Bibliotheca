@@ -5,6 +5,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Imbue&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
   <link rel="stylesheet" href="styles.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +25,6 @@
         <div id="list-th">
           <h1 id="error-message">Phew no books today? feel free to add one</h1>
           <!-- Book Cards -->
-                
         </div>
       </div>
       <div id="modal" class="modal">
@@ -40,10 +40,27 @@
           </select></p>
           <div>
           <span id="error-form">Oops! please check book info</span>
-            <button type="submit">Add</button>
+            <button class="addbtn" type="submit">Add</button>
           </div>
-          </form>
-        </div> 
+        </form>
+      </div>
+      <div class="canvasModal" id="canvasModal">
+        <div class="top-bar">
+          <button class="btn" id="prev-page">
+              <i class="fas fa-arrow-circle-left"></i> Prev Page
+          </button>
+          <button class="btn" id="next-page">
+              Next Page <i class="fas fa-arrow-circle-right"></i> 
+          </button>
+          <span class="page-info">
+              Page <span id="page-num"></span> of <span id="page-count"> </span>
+          </span>
+      </div>
+  
+      <canvas id="pdf-render"></canvas>
+      <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+      <script src="js/main.js"></script>
+      </div> 
   </div>
   <a id="plus"><div class="plus radius"></div></a>
 </body>

@@ -16,6 +16,9 @@ const modal = document.getElementById("modal")
 const addBookBtn = document.getElementById("plus")
 const addBookForm = document.getElementById("form")
 
+//View Books 
+const canvasModal = document.getElementById("canvasModal")
+
 function openPopUp() {
     modal.style.display = "block"
     addBookBtn.style.display = "none"
@@ -26,13 +29,28 @@ function closePopUp() {
     addBookBtn.style.display = "block"
 }
 
+function openCanvas() {
+    canvasModal.style.display = "block"
+    addBookBtn.style.display = "none"
+}
 
+function closeCanvas() {
+    canvasModal.style.display = "none";
+    addBookBtn.style.display = "block"
+}
 
+//closing modals
 window.onclick = function(event) {
     if (event.target == modal) {
       closePopUp()
     }
 }
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeCanvas()
+    }
+  })
 
 
 //Add Book Form
@@ -184,6 +202,10 @@ function createBook (book) {
     const coverTitleCSS = document.getElementById(`coverTitle${bookIndex}`)
 
     book.read ? markRead(coverIndexCSS, coverTitleCSS) : markUnRead(coverIndexCSS, coverTitleCSS)
+
+    cover.addEventListener('click', () => {
+        openCanvas()
+    })
 
     cover.addEventListener("dblclick", () => {
         book.read ? markUnRead(coverIndexCSS, coverTitleCSS) : markRead(coverIndexCSS, coverTitleCSS)
