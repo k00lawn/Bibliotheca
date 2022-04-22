@@ -304,3 +304,17 @@ option {
   cursor: pointer;
   padding: 0.7rem 2rem;
 }
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.page-info {
+  margin-left: 1rem;
+}
+
+.error {
+  background: #e6e6e6;
+  color: #555555;
+  padding: 1rem;
+}
