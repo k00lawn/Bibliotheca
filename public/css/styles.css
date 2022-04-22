@@ -202,20 +202,6 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.canvasModal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 50px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
 /* Add Book Form */
 
 .form{
@@ -286,4 +272,35 @@ option {
   margin-left: 5px;
   margin-top: 10px;
   float: left;
+}
+
+/* CANVAS */
+
+.top-bar {
+  background: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+.canvasModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  /*  padding-top: 50px; Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.btn {
+  background: #e6e6e6;
+  color: #555555;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.7rem 2rem;
 }
