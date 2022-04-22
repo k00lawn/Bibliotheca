@@ -222,7 +222,7 @@ function createBook (book) {
 
 const readBook = bookName => {
     const filename = null;
-    const url = '../docs/pdf.pdf';
+    const url = 'docs/pdf.pdf';
 
 let pdfDoc = null,
     pageNum = 1,
