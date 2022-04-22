@@ -63,9 +63,21 @@ window.addEventListener ( "load", () => {
         form.reset()
     })
 
+    async function uploadFile(file) {
+
+        console.log(file)
+        let formData = new FormData(); 
+        formData.append("pdf", file);
+        await fetch('/single', {
+          method: "POST", 
+          body: formData
+        }); 
+        alert('The file has been uploaded successfully.');
+    }
+
     form.addEventListener("submit", function (event)  {
         event.preventDefault();
-        
+        const pdfFile = document.getElementById("pdfFile").files[0];
 
         const form_title = document.getElementById('title').value
         const form_author = document.getElementById('author').value
@@ -82,7 +94,7 @@ window.addEventListener ( "load", () => {
         form_pages = parseInt(form_pages)
         form_bookread = (form_bookread === "true") ? true : false
 
-        
+        uploadFile(pdfFile)
         addBook(form_title, form_author, parseInt(form_pages), form_bookread)
         closePopUp()
     })

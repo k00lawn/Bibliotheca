@@ -28,7 +28,7 @@
         </div>
       </div>
       <div id="modal" class="modal">
-        <form id="form" class="form">
+        <form action="/single" method="POST" enctype="multipart/form-data" id="form" class="form">
           <h2>Add Book</h2>
           <p>Book Title <input type="text" id="title" name="title"></input></p>
           <p>Author <input type="text" id="author" name="author"></input></p>
@@ -39,7 +39,8 @@
               <option value=true>I have read the book.</option>
           </select></p>
           <div>
-          <span id="error-form">Oops! please check book info</span>
+            <span id="error-form">Oops! please check book info</span>
+            <input type="file" name="pdf" id="pdfFile"/>
             <button class="addbtn" type="submit">Add</button>
           </div>
         </form>
