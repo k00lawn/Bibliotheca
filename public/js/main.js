@@ -300,6 +300,20 @@ const showNextPage = () => {
     queueRenderPage(pageNum)
 }
 
+const goToPage = () => {
+
+    var gotoPageNum = document.querySelector('#goto-pageNum').value;
+    
+    if(gotoPageNum <=1 || gotoPageNum >= pdfDoc.numPages) {
+        return
+    }
+
+    pageNum = parseInt(gotoPageNum);
+    console.log(pageNum)
+    queueRenderPage(pageNum)
+    document.querySelector('#goto-pageNum').value = '';
+}
+
 pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
     pdfDoc = pdfDoc_;
     console.log(pdfDoc);
@@ -320,7 +334,7 @@ pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
 
 document.querySelector('#prev-page').addEventListener('click', showPrevPage)
 document.querySelector('#next-page').addEventListener('click', showNextPage)
-
+document.querySelector('#goto-page').addEventListener('click', goToPage)
 
 }
 
