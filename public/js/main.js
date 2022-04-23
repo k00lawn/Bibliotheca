@@ -65,9 +65,10 @@ window.addEventListener ( "load", () => {
 
     async function uploadFile(file) {
 
-        console.log(file)
-        let formData = new FormData(); 
-        formData.append("pdf", file);
+        let formData = new FormData();
+        let fileId = Math.random().toString(36).slice(2, 8);
+        const newFileName = `${fileId}.pdf`
+        formData.append("pdf", file, newFileName);
         await fetch('/single', {
           method: "POST", 
           body: formData
