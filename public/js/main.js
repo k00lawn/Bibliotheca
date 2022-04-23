@@ -1,11 +1,12 @@
 // Book constructor
-function Book (title, author, pages, read) {
+function Book (title, author, pages, read, id) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.id = id;
     this.info = function () {
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}, id = ${this.id}`
     }
 }
 
@@ -63,12 +64,12 @@ window.addEventListener ( "load", () => {
         form.reset()
     })
 
-    async function uploadFile(file) {
+    async function uploadFile(file, fileId) {
 
         let formData = new FormData();
-        let fileId = Math.random().toString(36).slice(2, 8);
-        const newFileName = `${fileId}.pdf`
-        formData.append("pdf", file, newFileName);
+        // let fileId = Math.random().toString(36).slice(2, 8);
+        // const newFileName = `${fileId}.pdf`
+        formData.append("pdf", file, `${fileId}.pdf`);
         await fetch('/single', {
           method: "POST", 
           body: formData
@@ -84,6 +85,7 @@ window.addEventListener ( "load", () => {
         const form_author = document.getElementById('author').value
         var form_pages = document.getElementById('pages').value
         var form_bookread = document.getElementById('book_read').value
+        let fileId = Math.random().toString(36).slice(2, 8);
 
         //Form Validation
         if(!form_title || !form_author || !form_pages) {
@@ -95,8 +97,8 @@ window.addEventListener ( "load", () => {
         form_pages = parseInt(form_pages)
         form_bookread = (form_bookread === "true") ? true : false
 
-        uploadFile(pdfFile)
-        addBook(form_title, form_author, parseInt(form_pages), form_bookread)
+        uploadFile(pdfFile, fileId)
+        addBook(form_title, form_author, parseInt(form_pages), form_bookread, fileId)
         closePopUp()
     })
 })
@@ -124,8 +126,8 @@ function removeBook(book) {
 
 
 //Add book function
-function addBook (title, author, pages, read) {
-    const newBook = new Book(title, author, pages, read)
+function addBook (title, author, pages, read, id) {
+    const newBook = new Book(title, author, pages, read, id)
     myLibrary.push(newBook)
     save()
     load()
@@ -218,7 +220,7 @@ function createBook (book) {
 
     cover.addEventListener('click', () => {
         openCanvas()
-        readBook(coverTitle)
+        readBook(book.id)
     })
 
     cover.addEventListener("dblclick", () => {
@@ -233,9 +235,8 @@ function createBook (book) {
 
 //Read Book 
 
-const readBook = bookName => {
-    const filename = null;
-    const url = 'docs/pdf.pdf';
+const readBook = bookId => {
+    let url = `docs/${bookId}.pdf`;
 
 let pdfDoc = null,
     pageNum = 1,
