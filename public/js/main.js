@@ -236,9 +236,9 @@ function createBook (book) {
 //Read Book 
 
 const readBook = bookId => {
-    let url = `docs/${bookId}.pdf`;
+    var url = `docs/${bookId}.pdf`;
 
-let pdfDoc = null,
+var pdfDoc = null,
     pageNum = 1,
     pageIsRendering = false,
     pageNumIsPending = null;
@@ -304,7 +304,7 @@ const goToPage = () => {
 
     var gotoPageNum = document.querySelector('#goto-pageNum').value;
     
-    if(gotoPageNum <=1 || gotoPageNum >= pdfDoc.numPages) {
+    if(gotoPageNum <1 || gotoPageNum > pdfDoc.numPages) {
         return
     }
 
