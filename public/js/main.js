@@ -157,6 +157,9 @@ function createBook (book) {
     const linebreak = document.createElement('br')
     const a = document.createElement('a')
 
+    //Creating Canvas
+    const canvas = document.createElement('canvas')
+
     //Creating Book Elements
     const list = document.querySelector('#list-th')
     const bookContainer = document.createElement('div')
@@ -165,7 +168,7 @@ function createBook (book) {
     const description = document.createElement('div')
     const removeBtn = document.createElement('i')
 
-    //Book Content
+    //Creating Book Content
     const title = document.createElement('p')
     const author = document.createElement('span')
     const pages = document.createElement('span')
@@ -176,6 +179,7 @@ function createBook (book) {
     description.classList.add('description')
 
     //Setting Attributes
+    canvas.setAttribute('id', 'pdf-render')
     bookContainer.setAttribute('id', bookIndex)
     cover.setAttribute('id', `cover${bookIndex}`)
     coverTitle.setAttribute('id', `coverTitle${bookIndex}`)
@@ -219,6 +223,10 @@ function createBook (book) {
     book.read ? markRead(coverIndexCSS, coverTitleCSS) : markUnRead(coverIndexCSS, coverTitleCSS)
 
     cover.addEventListener('click', () => {
+        
+        document.getElementById('div_canvas').innerHTML = "";
+        document.getElementById('div_canvas').appendChild(canvas)
+
         openCanvas()
         readBook(book.id)
     })
@@ -235,7 +243,7 @@ function createBook (book) {
 
 //Read Book 
 
-const readBook = bookId => {
+var readBook = bookId => {
     var url = `docs/${bookId}.pdf`;
 
 var pdfDoc = null,
@@ -248,7 +256,7 @@ const scale = 1.5,
     ctx = canvas.getContext('2d');
 
 // Render the page
-const renderPage = num => {
+var renderPage = num => {
     pageIsRendering = true;
 
     pdfDoc.getPage(num).then(page => {
@@ -274,7 +282,7 @@ const renderPage = num => {
     })
 };
 
-const queueRenderPage = num => {
+var queueRenderPage = num => {
     if(pageIsRendering) {
         pageNumIsPending = num; 
     } else {
@@ -282,7 +290,7 @@ const queueRenderPage = num => {
     }
 }
 
-const showPrevPage = () => {
+var showPrevPage = () => {
     if(pageNum <= 1) {
         return;
     }
@@ -291,7 +299,7 @@ const showPrevPage = () => {
     queueRenderPage(pageNum)
 }
 
-const showNextPage = () => {
+var showNextPage = () => {
     if(pageNum >= pdfDoc.numPages) {
         return;
     }
@@ -300,21 +308,24 @@ const showNextPage = () => {
     queueRenderPage(pageNum)
 }
 
-const goToPage = () => {
-
+var goToPage = () => {
+    // gotopagenum should change on change
     var gotoPageNum = document.querySelector('#goto-pageNum').value;
+    console.log(pdfDoc.numPages) 
     
-    if(gotoPageNum <1 || gotoPageNum > pdfDoc.numPages) {
-        return
-    }
+    // if((gotoPageNum <1) || (gotoPageNum > pdfDoc.numPages)) {
+    //     alert('page over')
+    //     return
+    // }
 
     pageNum = parseInt(gotoPageNum);
     console.log(pageNum)
     queueRenderPage(pageNum)
-    document.querySelector('#goto-pageNum').value = '';
+    // document.querySelector('#goto-pageNum').value = '';
 }
 
 pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
+
     pdfDoc = pdfDoc_;
     console.log(pdfDoc);
     document.querySelector('#page-count').textContent = pdfDoc.numPages;
