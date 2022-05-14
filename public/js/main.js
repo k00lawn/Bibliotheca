@@ -36,6 +36,7 @@ function openCanvas() {
 }
 
 function closeCanvas() {
+    document.getElementById('div_canvas').innerHTML = "";
     canvasModal.style.display = "none";
     addBookBtn.style.display = "block"
 }
