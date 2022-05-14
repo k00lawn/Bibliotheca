@@ -1,2 +1,2 @@
-# TheBookLibrary
+# Bibliotheca
 As the number of books grow in one's book collection, it would be convenient to have an online web - based utility to manage them. In this project, we have designed an online web - system called TheBookLibraray to mange one's personal book collection either in digital format or audio format. It stores book information in a local database book information can be easily added, deleted, updated orsearched in the book database. Most of the book's information, such as book title, author, publisher and cover picture, can be downloaded from the Internet. The user only needs to input them.
